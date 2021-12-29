@@ -8,7 +8,7 @@ GET http://localhost:8080/words/1
 # Delete by id
 DELETE  http://localhost:8080/words/4
 
-# Post new location
+# Post new word
 POST http://localhost:8080/words/
 Content-type: application/json
 
