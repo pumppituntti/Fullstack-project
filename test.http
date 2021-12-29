@@ -4,7 +4,6 @@ GET http://localhost:8080/words/
 # Find by id
 GET http://localhost:8080/words/1
 
-
 # Delete by id
 DELETE  http://localhost:8080/words/4
 
