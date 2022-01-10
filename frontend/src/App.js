@@ -17,10 +17,9 @@ function App() {
   return (
     <div className="App">
       <div className="App__sidebar">
-        <div>Sidebar</div>
-        <div>Sidebar</div>
-        <div>Sidebar</div>
-        <div>Sidebar</div>
+        <span>Home</span>
+        <span>Learn</span>
+        <span>Play</span>
       </div>
       <div className="App__content">
         <Words />
