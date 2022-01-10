@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-import { Words } from "./components";
+import { Homepage, Words } from "./components";
 
 function App() {
   // const [words, setWords] = useState(null);
@@ -39,6 +39,7 @@ function App() {
       </div>
       <div className="App__content">
         <Routes>
+          <Route exact path="/" element={<Homepage />} />
           <Route exact path="/learn" element={<Words isPlayable={false} />} />
           <Route exact path="/play" element={<Words isPlayable={true} />} />
         </Routes>
