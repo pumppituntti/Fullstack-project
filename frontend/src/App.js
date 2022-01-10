@@ -10,39 +10,38 @@ function App() {
   // const [inputValue, setInputValue] = useState("");
   // const [checker, setChecker] = useState(false);
 
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
   return (
     <div className="App">
       <div className="App__sidebar">
         <span
           onClick={() => {
-            // navigate(`/`);
+            navigate(`/`);
           }}
         >
           Home
         </span>
         <span
           onClick={() => {
-            // navigate(`/learn`);
+            navigate(`/learn`);
           }}
         >
           Learn
         </span>
         <span
           onClick={() => {
-            // navigate(`/play`);
+            navigate(`/play`);
           }}
         >
           Play
         </span>
       </div>
       <div className="App__content">
-        {/* <Routes>
-          <Route exact path="/learn" element={<Words isPlayable={false}/>} />
-          <Route exact path="/play" element={<Words isPlayable={true}/>} />
-        </Routes> */}
-        <Words isPlayable={true} />
+        <Routes>
+          <Route exact path="/learn" element={<Words isPlayable={false} />} />
+          <Route exact path="/play" element={<Words isPlayable={true} />} />
+        </Routes>
       </div>
     </div>
   );
