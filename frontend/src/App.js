@@ -10,12 +10,6 @@ function App() {
   // const [inputValue, setInputValue] = useState("");
   // const [checker, setChecker] = useState(false);
 
-  // useEffect(() => {
-  //   axios("http://localhost:8080/words").then(({ data }) => {
-  //     setWords(data);
-  //   });
-  // }, []);
-
   // let navigate = useNavigate();
 
   return (
@@ -48,7 +42,7 @@ function App() {
           <Route exact path="/learn" element={<Words isPlayable={false}/>} />
           <Route exact path="/play" element={<Words isPlayable={true}/>} />
         </Routes> */}
-        <Words isPlayable={false} />
+        <Words isPlayable={true} />
       </div>
     </div>
   );

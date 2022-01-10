@@ -7,6 +7,7 @@ import "./Words.scss";
 const Words = ({ isPlayable }) => {
   const [words, setWords] = useState(null);
   const [inputValue, setInputValue] = useState("");
+  const [score, setScore] = useState(0);
   //   const [checker, setChecker] = useState(false);
 
   useEffect(() => {
@@ -14,6 +15,12 @@ const Words = ({ isPlayable }) => {
       setWords(data);
     });
   }, []);
+
+  const checkWord = (e, word) => {
+    if (e.target.value.toLowerCase() === word.eng.toLowerCase()) {
+      setScore(score + 1);
+    }
+  };
 
   const deleteWord = async (id) => {
     if (window.confirm("Are you sure want to delete this word?")) {
@@ -33,19 +40,10 @@ const Words = ({ isPlayable }) => {
               {word.fin} ={" "}
               <input
                 placeholder="Type here in English"
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={(e) => {
+                  checkWord(e, word);
+                }}
               />
-              <div>
-                <button
-                  onClick={() => {
-                    if (inputValue.toUpperCase === word.eng.toUpperCase)
-                      alert("YOURE GODDAMN RIGHT!");
-                    else alert("You have a mistake! Try again!");
-                  }}
-                >
-                  Check answer
-                </button>
-              </div>
             </div>
           ))
         : words.map((word) => (
@@ -68,6 +66,13 @@ const Words = ({ isPlayable }) => {
               </svg>
             </div>
           ))}
+      <button
+        onClick={() => {
+          alert(`Your score is ${score}`);
+        }}
+      >
+        Check answer
+      </button>
       <AddWord />
     </div>
   );
