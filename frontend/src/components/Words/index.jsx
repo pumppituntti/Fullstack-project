@@ -25,7 +25,7 @@ const Words = ({ isPlayable }) => {
   const deleteWord = async (id) => {
     if (window.confirm("Are you sure want to delete this word?")) {
       await axios.delete(`http://localhost:8080/words/${id}`);
-      alert("DONE!");
+      alert("Deleted!");
     }
   };
 
@@ -66,14 +66,19 @@ const Words = ({ isPlayable }) => {
               </svg>
             </div>
           ))}
-      <button
-        onClick={() => {
-          alert(`Your score is ${score}`);
-        }}
-      >
-        Check answer
-      </button>
-      <AddWord />
+      {isPlayable ? (
+        <div>
+          <button
+            onClick={() => {
+              alert(`Your score is ${score}`);
+            }}
+          >
+            Check answer
+          </button>
+        </div>
+      ) : (
+        <AddWord />
+      )}
     </div>
   );
 };

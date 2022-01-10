@@ -42,6 +42,7 @@ function App() {
           <Route exact path="/" element={<Homepage />} />
           <Route exact path="/learn" element={<Words isPlayable={false} />} />
           <Route exact path="/play" element={<Words isPlayable={true} />} />
+          <Route exact path="/edit" element={<Words />} />
         </Routes>
       </div>
     </div>

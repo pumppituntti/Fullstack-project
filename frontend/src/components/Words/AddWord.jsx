@@ -12,12 +12,12 @@ const AddWord = () => {
     };
 
     if (obj.fin && obj.eng) {
-      //   await axios.post("http://localhost:8080/words", obj);
+      await axios.post("http://localhost:8080/words", obj);
       setInputValueEng("");
       setInputValueFin("");
-      //   alert("DONE!");
+      alert("Added!");
     } else {
-      alert("This field should not be empty!");
+      alert("Fields should not be empty!");
     }
   };
 
