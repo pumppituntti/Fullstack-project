@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
-import axios from "axios";
-
-import { Homepage, Words } from "./components";
+import { EditPage, Homepage, Words } from "./components";
 
 function App() {
-  // const [words, setWords] = useState(null);
-  // const [inputValue, setInputValue] = useState("");
-  // const [checker, setChecker] = useState(false);
-
   let navigate = useNavigate();
 
   return (
@@ -42,7 +36,7 @@ function App() {
           <Route exact path="/" element={<Homepage />} />
           <Route exact path="/learn" element={<Words isPlayable={false} />} />
           <Route exact path="/play" element={<Words isPlayable={true} />} />
-          <Route exact path="/edit" element={<Words />} />
+          <Route exact path="/edit" element={<EditPage />} />
         </Routes>
       </div>
     </div>
