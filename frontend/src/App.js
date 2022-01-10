@@ -3,22 +3,28 @@ import axios from "axios";
 
 import { Words } from "./components";
 
-import "./App.css";
-
 function App() {
-  const [words, setWords] = useState(null);
-  const [inputValue, setInputValue] = useState("");
+  // const [words, setWords] = useState(null);
+  // const [inputValue, setInputValue] = useState("");
   // const [checker, setChecker] = useState(false);
 
-  useEffect(() => {
-    axios("http://localhost:8080/words").then(({ data }) => {
-      setWords(data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios("http://localhost:8080/words").then(({ data }) => {
+  //     setWords(data);
+  //   });
+  // }, []);
 
   return (
     <div className="App">
-      <Words />
+      <div className="App__sidebar">
+        <div>Sidebar</div>
+        <div>Sidebar</div>
+        <div>Sidebar</div>
+        <div>Sidebar</div>
+      </div>
+      <div className="App__content">
+        <Words />
+      </div>
     </div>
   );
 }
