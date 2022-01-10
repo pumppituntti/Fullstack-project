@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import AddWord from "./AddWord";
 
 import "./Words.scss";
 
-const Words = () => {
+const Words = ({ isPlayable }) => {
   const [words, setWords] = useState(null);
   const [inputValue, setInputValue] = useState("");
   //   const [checker, setChecker] = useState(false);
@@ -19,7 +20,8 @@ const Words = () => {
       <h2>Words</h2>
       {words === null
         ? "Loading..."
-        : words.map((word) => (
+        : isPlayable
+        ? words.map((word) => (
             <div className="words__pair" key={word.id}>
               {word.fin} ={" "}
               <input
@@ -38,7 +40,13 @@ const Words = () => {
                 </button>
               </div>
             </div>
+          ))
+        : words.map((word) => (
+            <div className="words__pair__list" key={word.id}>
+              {word.fin} = {word.eng}
+            </div>
           ))}
+      <AddWord />
     </div>
   );
 };

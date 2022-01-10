@@ -45,9 +45,10 @@ function App() {
       </div>
       <div className="App__content">
         {/* <Routes>
-          <Route exact path="/play" element={<Words />} />
+          <Route exact path="/learn" element={<Words isPlayable={false}/>} />
+          <Route exact path="/play" element={<Words isPlayable={true}/>} />
         </Routes> */}
-        <Words />
+        <Words isPlayable={false} />
       </div>
     </div>
   );
