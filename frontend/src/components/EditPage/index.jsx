@@ -16,7 +16,7 @@ const EditPage = () => {
   const deleteWord = async (id) => {
     if (window.confirm("Are you sure want to delete this word?")) {
       await axios.delete(`http://localhost:8080/words/${id}`);
-      alert("Deleted!");
+      document.location.reload(true);
     }
   };
 

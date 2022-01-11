@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./Words.scss";
+import WordsToLearn from "./WordsToLearn";
 
 const Words = ({ isPlayable }) => {
   const [words, setWords] = useState(null);
   const [score, setScore] = useState(0);
-
-  let navigate = useNavigate();
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     axios("http://localhost:8080/words").then(({ data }) => {
@@ -19,56 +18,65 @@ const Words = ({ isPlayable }) => {
   const checkWord = (e, word) => {
     if (e.target.value.toLowerCase() === word.eng.toLowerCase()) {
       setScore(score + 1);
-    }
+    } else return false;
   };
 
   return (
     <div className="words">
       <h2>Words</h2>
-      {words === null
-        ? "Loading..."
-        : isPlayable
-        ? words.map((word) => (
-            <div className="words__pair" key={word.id}>
-              {word.fin} ={" "}
-              <input
-                placeholder="Type here in English"
-                onChange={(e) => {
-                  checkWord(e, word);
+      {words === null ? (
+        "Loading..."
+      ) : isPlayable ? (
+        !isChecked ? (
+          <div>
+            {words.map((word) => (
+              <div className="words__pair" key={word.id}>
+                {word.fin} ={" "}
+                <input
+                  placeholder="Type here in English"
+                  onChange={(e) => {
+                    checkWord(e, word);
+                  }}
+                />
+              </div>
+            ))}
+            <div>
+              <button
+                onClick={() => {
+                  setIsChecked(true);
                 }}
-              />
+              >
+                Check answer
+              </button>
             </div>
-          ))
-        : words.map((word) => (
-            <div className="words__pair" key={word.id}>
-              {word.fin} = {word.eng}
+          </div>
+        ) : (
+          <div>
+            {words.map((word) => (
+              <div className="words__pair" key={word.id}>
+                {word.fin} ={" "}
+                <input
+                  placeholder="Type here in English"
+                  onChange={(e) => {
+                    checkWord(e, word);
+                  }}
+                />
+              </div>
+            ))}
+            <div>
+              Your score is {score}
+              <button
+                onClick={() => {
+                  document.location.reload(true);
+                }}
+              >
+                Try again
+              </button>
             </div>
-          ))}
-      {isPlayable ? (
-        <div>
-          <button
-            onClick={() => {
-              alert(`Your score is ${score}`);
-            }}
-          >
-            Check answer
-          </button>
-          <button
-            onClick={() => {
-              document.location.reload(true);
-            }}
-          >
-            Try again
-          </button>
-        </div>
+          </div>
+        )
       ) : (
-        <button
-          onClick={() => {
-            navigate(`/play`);
-          }}
-        >
-          Try yourself!
-        </button>
+        <WordsToLearn words={words} />
       )}
     </div>
   );

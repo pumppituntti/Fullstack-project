@@ -13,9 +13,7 @@ const AddWord = () => {
 
     if (obj.fin && obj.eng) {
       await axios.post("http://localhost:8080/words", obj);
-      setInputValueEng("");
-      setInputValueFin("");
-      alert("Added!");
+      document.location.reload(true);
     } else {
       alert("Fields should not be empty!");
     }
