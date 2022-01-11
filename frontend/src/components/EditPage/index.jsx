@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AddWord from "./AddWord";
 
+import "./EditPage.scss";
+
 const EditPage = () => {
   const [words, setWords] = useState(null);
 
@@ -19,12 +21,12 @@ const EditPage = () => {
   };
 
   return (
-    <div>
+    <div className="words">
       <h2>Edit vocabulary</h2>
-      <h3>
+      <p>
         On this page you can edit vocabulary. You can add new words or delete
         olds ones.
-      </h3>
+      </p>
       {words === null
         ? "Loading..."
         : words.map((word) => (

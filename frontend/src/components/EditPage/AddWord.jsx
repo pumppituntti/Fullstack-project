@@ -23,6 +23,7 @@ const AddWord = () => {
 
   return (
     <div className="words__form">
+      Add new word
       <div className="words__form-block">
         <input
           className="field"
@@ -36,7 +37,7 @@ const AddWord = () => {
           placeholder="In English"
           onChange={(e) => setInputValueEng(e.target.value)}
         />
-        <button onClick={AddWord}>Add new word</button>
+        <button onClick={AddWord}>Add</button>
       </div>
     </div>
   );

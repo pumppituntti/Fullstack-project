@@ -40,7 +40,7 @@ const Words = ({ isPlayable }) => {
             </div>
           ))
         : words.map((word) => (
-            <div className="words__pair__list" key={word.id}>
+            <div className="words__pair" key={word.id}>
               {word.fin} = {word.eng}
             </div>
           ))}
@@ -52,6 +52,13 @@ const Words = ({ isPlayable }) => {
             }}
           >
             Check answer
+          </button>
+          <button
+            onClick={() => {
+              document.location.reload(true);
+            }}
+          >
+            Try again
           </button>
         </div>
       ) : (

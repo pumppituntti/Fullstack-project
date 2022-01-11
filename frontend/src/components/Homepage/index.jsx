@@ -11,7 +11,7 @@ const Homepage = () => {
         minima molestiae adipisci aliquid at officia aspernatur exercitationem
         odio harum.
       </p>
-      <h3>Are you teacher or pupil?</h3>
+      <p>If you are teacher, you can edit word list, by clicking this button</p>{" "}
       <div>
         <button
           onClick={() => {
@@ -20,7 +20,6 @@ const Homepage = () => {
         >
           I am teacher
         </button>
-        <button>I am pupil</button>
       </div>
     </div>
   );
