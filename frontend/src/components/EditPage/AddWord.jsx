@@ -23,25 +23,6 @@ const AddWord = () => {
     }
   };
 
-  const editWord = async () => {
-    const obj = {
-      fin: inputValueFin,
-      eng: inputValueEng,
-      id: 12,
-    };
-
-    if (obj.fin && obj.eng) {
-      try {
-        await axios.patch("http://localhost:8080/words", obj);
-        document.location.reload(true);
-      } catch (error) {
-        alert(error);
-      }
-    } else {
-      alert("Fields should not be empty!");
-    }
-  };
-
   return (
     <div className="words__form">
       Add new word
