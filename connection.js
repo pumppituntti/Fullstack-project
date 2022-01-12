@@ -44,6 +44,28 @@ let connectionFunctions = {
     });
   },
 
+  editWord: (word) =>
+    new Promise((resolve, reject) => {
+      connection.query(
+        "update words set fin = " +
+          connection.escape(word.fin) +
+          ", eng = " +
+          connection.escape(word.eng) +
+          "where id = " +
+          connection.escape(word.id),
+        (err, words) => {
+          if (err) {
+            reject("data can't be edited for some reason, please try again");
+          }
+          if (words.affectedRows == 0) {
+            reject("No such word");
+          } else {
+            resolve("Edited word succesfully");
+          }
+        }
+      );
+    }),
+
   findAll: () => {
     return new Promise((resolve, reject) => {
       connection.query("select * from words", (err, words) => {
@@ -53,21 +75,6 @@ let connectionFunctions = {
           resolve(words);
         }
       });
-    });
-  },
-
-  sortBy: (key) => {
-    return new Promise((resolve, reject) => {
-      connection.query(
-        `select * from words order by ${key}, id`,
-        (err, words) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(words);
-          }
-        }
-      );
     });
   },
 

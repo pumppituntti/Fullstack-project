@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import WordsToLearn from "./WordsToLearn";
 
 import "./Words.scss";
 
 const Words = ({ isPlayable }) => {
+  const ref = useRef(null);
   const [words, setWords] = useState(null);
   const [score, setScore] = useState(0);
   const [isChecked, setIsChecked] = useState(false);
@@ -22,12 +23,18 @@ const Words = ({ isPlayable }) => {
     if (finToEng) {
       if (e.target.value.toLowerCase() === word.eng.toLowerCase()) {
         setScore(score + 1);
-      } else return false;
+        return true;
+      }
     } else {
       if (e.target.value.toLowerCase() === word.fin.toLowerCase()) {
         setScore(score + 1);
+        return true;
       } else return false;
     }
+  };
+
+  let divStyle = {
+    color: "blue",
   };
 
   return (
@@ -38,21 +45,17 @@ const Words = ({ isPlayable }) => {
         !isChecked ? (
           <div>
             <h2>Play</h2>
-            <button
-              onClick={() => {
-                setFinToEng(!finToEng);
-              }}
-            >
-              Change language
-            </button>
             {words.map((word) => (
-              <div className="words__pair" key={word.id}>
+              <div className="words__pair" style={divStyle} key={word.id}>
                 {finToEng ? word.fin : word.eng} ={" "}
                 <input
                   className="words__pair-answer"
                   placeholder="Type answer"
+                  ref={ref}
                   onChange={(e) => {
-                    checkWord(e, word);
+                    if (checkWord(e, word)) {
+                      console.log("hello");
+                    }
                   }}
                 />
               </div>
@@ -64,6 +67,13 @@ const Words = ({ isPlayable }) => {
                 }}
               >
                 Check answer
+              </button>
+              <button
+                onClick={() => {
+                  setFinToEng(!finToEng);
+                }}
+              >
+                Change language
               </button>
             </div>
           </div>
@@ -77,7 +87,9 @@ const Words = ({ isPlayable }) => {
                   className="words__pair-answer"
                   placeholder="Type answer"
                   onChange={(e) => {
-                    checkWord(e, word);
+                    if (checkWord(e, word)) {
+                      console.log("hello");
+                    }
                   }}
                 />
               </div>

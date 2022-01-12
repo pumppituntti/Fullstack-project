@@ -30,7 +30,7 @@ const EditPage = () => {
         ? "Loading..."
         : words.map((word) => (
             <div className="words__pair__list" key={word.id}>
-              {word.fin} = {word.eng}
+              {word.id} = {word.fin} = {word.eng}
               <svg
                 width="11"
                 height="11"

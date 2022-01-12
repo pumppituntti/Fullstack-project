@@ -21,25 +21,6 @@ var schema = {
 
 words.use(express.json());
 
-// words.get("/sort?", async (req, res) => {
-//   try {
-//     if (req.query.latitude !== undefined) {
-//       console.log(req.query.latitude);
-//       let key = `latitude`;
-//       let result = await connection.sortBy(key);
-//       res.send(result);
-//     } else if (req.query.longitude !== undefined) {
-//       let key = `longitude`;
-//       let result = await connection.sortBy(key);
-//       res.send(result);
-//     } else {
-//       res.sendStatus(400);
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
 words.get("/", async (req, res) => {
   try {
     let result = await connection.findAll();
@@ -78,6 +59,18 @@ words.post("/", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+  }
+});
+
+words.patch("/", async (req, res) => {
+  let word = req.body;
+  try {
+    var response = await connection.editWord(word);
+    res.statusCode = 200;
+    res.end();
+  } catch (error) {
+    res.statusCode = 404;
+    res.send({ msg: error });
   }
 });
 

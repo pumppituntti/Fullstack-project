@@ -5,15 +5,38 @@ const AddWord = () => {
   const [inputValueFin, setInputValueFin] = useState("");
   const [inputValueEng, setInputValueEng] = useState("");
 
-  const AddWord = async () => {
+  const addWord = async () => {
     const obj = {
       fin: inputValueFin,
       eng: inputValueEng,
     };
 
     if (obj.fin && obj.eng) {
-      await axios.post("http://localhost:8080/words", obj);
-      document.location.reload(true);
+      try {
+        await axios.post("http://localhost:8080/words", obj);
+        document.location.reload(true);
+      } catch (error) {
+        alert(error);
+      }
+    } else {
+      alert("Fields should not be empty!");
+    }
+  };
+
+  const editWord = async () => {
+    const obj = {
+      fin: inputValueFin,
+      eng: inputValueEng,
+      id: 12,
+    };
+
+    if (obj.fin && obj.eng) {
+      try {
+        await axios.patch("http://localhost:8080/words", obj);
+        document.location.reload(true);
+      } catch (error) {
+        alert(error);
+      }
     } else {
       alert("Fields should not be empty!");
     }
@@ -35,7 +58,7 @@ const AddWord = () => {
           placeholder="In English"
           onChange={(e) => setInputValueEng(e.target.value)}
         />
-        <button onClick={AddWord}>Add</button>
+        <button onClick={addWord}>Add</button>
       </div>
     </div>
   );
