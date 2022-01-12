@@ -5,13 +5,11 @@ const Homepage = () => {
 
   return (
     <div className="Homepage">
-      <h2>Homepage</h2>
+      <h2>LearnEnglish!</h2>
+      <p>Hi! In this app you can learn Finnish and English words!</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea veniam,
-        minima molestiae adipisci aliquid at officia aspernatur exercitationem
-        odio harum.
-      </p>
-      <p>If you are teacher, you can edit word list, by clicking this button</p>{" "}
+        If you are teacher, you can edit word list, by clicking this button
+      </p>{" "}
       <div>
         <button
           onClick={() => {

@@ -3,6 +3,10 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 
 import { EditPage, Homepage, Words } from "./components";
 
+import bookSvg from "./img/book.svg";
+import homeSvg from "./img/home.svg";
+import checkSvg from "./img/check.svg";
+
 function App() {
   let navigate = useNavigate();
 
@@ -14,6 +18,7 @@ function App() {
             navigate(`/`);
           }}
         >
+          <img src={homeSvg} alt="home icon" />
           Home
         </span>
         <span
@@ -21,6 +26,7 @@ function App() {
             navigate(`/learn`);
           }}
         >
+          <img src={bookSvg} alt="book icon" />
           Learn
         </span>
         <span
@@ -28,6 +34,7 @@ function App() {
             navigate(`/play`);
           }}
         >
+          <img src={checkSvg} alt="check icon" />
           Play
         </span>
       </div>

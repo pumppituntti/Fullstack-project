@@ -4,6 +4,7 @@ const WordsToLearn = ({ words }) => {
   let navigate = useNavigate();
   return (
     <div>
+      <h2>Learn</h2>
       {words.map((word) => (
         <div className="words__pair" key={word.id}>
           {word.fin} = {word.eng}

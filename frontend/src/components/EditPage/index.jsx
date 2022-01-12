@@ -22,7 +22,6 @@ const EditPage = () => {
 
   return (
     <div className="words">
-      <h2>Edit vocabulary</h2>
       <p>
         On this page you can edit vocabulary. You can add new words or delete
         olds ones.
