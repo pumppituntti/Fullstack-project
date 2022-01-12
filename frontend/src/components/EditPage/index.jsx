@@ -67,7 +67,7 @@ const EditPage = () => {
                 src={removeSvg}
                 alt="remove icon"
                 onClick={() => {
-                  delete word.id;
+                  deleteWord(word.id);
                 }}
               />
             </div>
