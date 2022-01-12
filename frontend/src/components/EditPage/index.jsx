@@ -55,7 +55,7 @@ const EditPage = () => {
         ? "Loading..."
         : words.map((word) => (
             <div className="words__pair__list" key={word.id}>
-              {word.id} = {word.fin} = {word.eng}
+              {word.fin} = {word.eng}
               <img
                 src={editSvg}
                 alt="edit icon"

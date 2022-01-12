@@ -2,11 +2,7 @@
   &__pair {
     margin-top: 10px;
     margin-bottom: 10px;
-    color: peru;
-
-    &-answer {
-      margin-left: 20px;
-    }
+    color: blueviolet;
 
     &__list {
       margin-top: 5px;
@@ -15,8 +11,6 @@
 }
 
 button {
+  margin-top: 10px;
   margin-right: 10px;
-}
-svg {
-  cursor: pointer;
 }

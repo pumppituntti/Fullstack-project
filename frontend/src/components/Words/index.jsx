@@ -11,6 +11,8 @@ const Words = ({ isPlayable }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [finToEng, setFinToEng] = useState(true);
 
+  const [rightAnswers, setRightAnswers] = useState([]);
+
   useEffect(() => {
     axios("http://localhost:8080/words").then(({ data }) => {
       const shuffledData = data.sort((a, b) => 0.5 - Math.random());
@@ -23,6 +25,9 @@ const Words = ({ isPlayable }) => {
     if (finToEng) {
       if (e.target.value.toLowerCase() === word.eng.toLowerCase()) {
         setScore(score + 1);
+        const newList = [...rightAnswers, word];
+        setRightAnswers(newList);
+        console.log(rightAnswers);
         return true;
       }
     } else {
@@ -34,7 +39,7 @@ const Words = ({ isPlayable }) => {
   };
 
   let divStyle = {
-    color: "blue",
+    color: "green",
   };
 
   return (
@@ -46,16 +51,14 @@ const Words = ({ isPlayable }) => {
           <div>
             <h2>Play</h2>
             {words.map((word) => (
-              <div className="words__pair" style={divStyle} key={word.id}>
+              <div className="words__pair" key={word.id}>
                 {finToEng ? word.fin : word.eng} ={" "}
                 <input
                   className="words__pair-answer"
                   placeholder="Type answer"
                   ref={ref}
                   onChange={(e) => {
-                    if (checkWord(e, word)) {
-                      console.log("hello");
-                    }
+                    checkWord(e, word);
                   }}
                 />
               </div>
@@ -80,8 +83,8 @@ const Words = ({ isPlayable }) => {
         ) : (
           <div>
             <h2>Play</h2>
-            {words.map((word) => (
-              <div className="words__pair" key={word.id}>
+            {rightAnswers.map((word) => (
+              <div className="words__pair" style={divStyle} key={word.id}>
                 {finToEng ? word.fin : word.eng} ={" "}
                 <input
                   className="words__pair-answer"
