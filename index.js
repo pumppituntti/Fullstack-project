@@ -12,6 +12,16 @@ app.use(express.static("frontend/build"));
 
 app.use("/words", words);
 
+/**
+ * Start backend server
+ */
+const server = app.listen(8080, () => {
+  console.log(`Listening on port ${server.address().port}`);
+});
+
+/**
+ * Close backend server
+ */
 const shutdown = () => {
   console.log("Closing HTTP server");
   server.close(() => {
@@ -21,7 +31,3 @@ const shutdown = () => {
 
 process.on("SIGINT", shutdown);
 process.on("SIGTERM", shutdown);
-
-const server = app.listen(8080, () => {
-  console.log(`Listening on port ${server.address().port}`);
-});

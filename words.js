@@ -4,6 +4,9 @@ var words = express.Router();
 const Validator = require("jsonschema").Validator;
 const validator = new Validator();
 
+/**
+ * Schema for object (word) validation when added to the database
+ */
 var schema = {
   properties: {
     fin: {
@@ -21,6 +24,9 @@ var schema = {
 
 words.use(express.json());
 
+/**
+ * Getting all objects from the database
+ */
 words.get("/", async (req, res) => {
   try {
     let result = await connection.findAll();
@@ -30,6 +36,9 @@ words.get("/", async (req, res) => {
   }
 });
 
+/**
+ * Getting an object from the database by id
+ */
 words.get("/:number([0-9]+)", async (req, res) => {
   try {
     let num = req.params.number;
@@ -44,6 +53,9 @@ words.get("/:number([0-9]+)", async (req, res) => {
   }
 });
 
+/**
+ * Adding an object to the database
+ */
 words.post("/", async (req, res) => {
   try {
     let loc = req.body;
@@ -62,6 +74,9 @@ words.post("/", async (req, res) => {
   }
 });
 
+/**
+ * Updating an object in the database
+ */
 words.patch("/", async (req, res) => {
   let word = req.body;
   try {
@@ -74,6 +89,9 @@ words.patch("/", async (req, res) => {
   }
 });
 
+/**
+ * Deleting an object from the database
+ */
 words.delete("/:number([0-9]+)", async (req, res) => {
   try {
     let num = req.params.number;

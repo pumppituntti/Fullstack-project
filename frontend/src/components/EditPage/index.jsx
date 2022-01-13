@@ -48,8 +48,8 @@ const EditPage = () => {
   return (
     <div className="words">
       <p>
-        On this page you can edit vocabulary. You can add new words or delete
-        olds ones.
+        On this page you can edit vocabulary. You can add new words and edit or
+        delete olds ones.
       </p>
       {words === null
         ? "Loading..."
