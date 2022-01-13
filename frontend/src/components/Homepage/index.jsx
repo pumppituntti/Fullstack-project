@@ -12,8 +12,10 @@ const Homepage = () => {
       <h2>LearnEnglish!</h2>
       <p>Hi! In this app you can learn Finnish and English words!</p>
       <p>
-        If you are teacher, you can edit word list, by clicking this button
-      </p>{" "}
+        To start learning words or playing, just click on the section you want
+        on the left side.
+      </p>
+      <p>If you are teacher, you can edit word list, by clicking this button</p>{" "}
       {/* Button for teacher to go to edit page */}
       <div>
         <button

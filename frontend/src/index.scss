@@ -15,11 +15,15 @@
   box-shadow: 1px 2px 20px #f3f3f3;
   border-radius: 10px;
   font-size: 14px;
+
   h2 {
     color: darkblue;
     font-size: 30px;
   }
 
+  p {
+    font-size: 18px;
+  }
   &__sidebar {
     background-color: #f4f6f8;
     width: 200px;
