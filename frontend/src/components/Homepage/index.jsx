@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
+/**
+ * This function renders the home page
+ * @returns homepage
+ */
 const Homepage = () => {
   let navigate = useNavigate();
 
@@ -10,6 +14,7 @@ const Homepage = () => {
       <p>
         If you are teacher, you can edit word list, by clicking this button
       </p>{" "}
+      {/* Button for teacher to go to edit page */}
       <div>
         <button
           onClick={() => {
