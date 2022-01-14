@@ -30,7 +30,6 @@ const Words = ({ isPlayable }) => {
    * An array with the correct answers given by the user
    */
   const [rightAnswers, setRightAnswers] = useState([]);
-  const [val, setVal] = useState("");
   /**
    * Getting an array by requesting a backend server
    * After receiving, the array is shuffled in random order
@@ -89,11 +88,9 @@ const Words = ({ isPlayable }) => {
               <div className="words__pair" key={word.id}>
                 {finToEng ? word.fin : word.eng} ={" "}
                 <input
-                  value={val}
                   className="words__pair-answer"
                   placeholder="Type answer"
                   onChange={(e) => {
-                    setVal(e.target.value);
                     checkWord(e, word);
                   }}
                 />
