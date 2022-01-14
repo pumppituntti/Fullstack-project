@@ -4,18 +4,16 @@ const app = express();
 
 const cors = require("cors");
 
+const port = process.env.PORT || 8080;
+
 app.use(cors());
-
-// app.use(express.static("frontend/public"));
-
 app.use(express.static("frontend/build"));
-
 app.use("/words", words);
 
 /**
  * Start backend server
  */
-const server = app.listen(8080, () => {
+const server = app.listen(port, () => {
   console.log(`Listening on port ${server.address().port}`);
 });
 
