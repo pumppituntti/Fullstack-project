@@ -49,6 +49,7 @@ const AddWord = ({ words, addWord }) => {
         {/* input field for finnish word */}
         <input
           className="field"
+          value={inputValueFin}
           type="text"
           placeholder="Suomeksi"
           onChange={(e) => setInputValueFin(e.target.value)}
@@ -56,6 +57,7 @@ const AddWord = ({ words, addWord }) => {
         {/* input field for english word */}
         <input
           className="field"
+          value={inputValueEng}
           type="text"
           placeholder="In English"
           onChange={(e) => setInputValueEng(e.target.value)}
