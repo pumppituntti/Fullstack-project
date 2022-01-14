@@ -14,27 +14,22 @@ const Words = ({ isPlayable }) => {
    * Array with words to render
    */
   const [words, setWords] = useState(null);
-
   /**
    * Score counter
    */
   const [score, setScore] = useState(0);
-
   /**
    * Boolean to check game over or not
    */
   const [isChecked, setIsChecked] = useState(false);
-
   /**
    * Boolean to check "direction of translation" (Finnish to English or vice versa)
    */
   const [finToEng, setFinToEng] = useState(true);
-
   /**
    * An array with the correct answers given by the user
    */
   const [rightAnswers, setRightAnswers] = useState([]);
-
   /**
    * Getting an array by requesting a backend server
    * After receiving, the array is shuffled in random order
@@ -47,6 +42,14 @@ const Words = ({ isPlayable }) => {
     });
   }, []);
 
+  useEffect(() => {
+    axios("/words/").then(({ data }) => {
+      const shuffledData = data.sort((a, b) => 0.5 - Math.random());
+      setWords(shuffledData);
+      setWords(data);
+    });
+  }, [isChecked]);
+
   /**
    * This function checks if the value entered by the user matches the value from the list (did the user write the correct word?)
    * @param {React.ChangeEvent<HTMLInputElement>} e - the current event of the input field
@@ -55,7 +58,7 @@ const Words = ({ isPlayable }) => {
   const checkWord = (e, word) => {
     // checking direction of translation
     if (finToEng) {
-      // if the input matches the correct answer, the score import {  } from "module"; incremented and the answer is added to the list of correct ones
+      // if the input matches the correct answer, the score incremented and the answer is added to the list of correct ones
       if (e.target.value.toLowerCase() === word.eng.toLowerCase()) {
         setScore(score + 1);
         const newList = [...rightAnswers, word];
