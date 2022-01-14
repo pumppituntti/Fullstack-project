@@ -42,6 +42,9 @@ const Words = ({ isPlayable }) => {
     });
   }, []);
 
+  /**
+   * Updating data when starting a new game
+   */
   useEffect(() => {
     axios("/words/").then(({ data }) => {
       const shuffledData = data.sort((a, b) => 0.5 - Math.random());
@@ -142,6 +145,7 @@ const Words = ({ isPlayable }) => {
                   setIsChecked(false);
                   setScore(0);
                   setRightAnswers([]);
+                  setWords([]);
                 }}
               >
                 Try again
