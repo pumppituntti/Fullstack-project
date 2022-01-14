@@ -21,19 +21,31 @@ const EditPage = () => {
    * Getting an array by requesting a backend server
    */
   useEffect(() => {
-    axios("http://localhost:8080/words").then(({ data }) => {
+    axios("/words").then(({ data }) => {
       setWords(data);
     });
   }, []);
 
+  useEffect(() => {
+    axios("/words").then(({ data }) => {
+      setWords(data);
+    });
+  }, [words]);
+
+  const addWord = (word) => {
+    const newList = [...words, word];
+    setWords(newList);
+  };
   /**
    * This function makes a request to delete an object from the database. After that the page is reloaded
    * @param {number} id - id of the object to be deleted
    */
   const deleteWord = async (id) => {
     if (window.confirm("Are you sure want to delete this word?")) {
-      await axios.delete(`http://localhost:8080/words/${id}`);
-      document.location.reload(true);
+      await axios.delete(`/words/${id}`);
+      const newLists = words.filter((word) => word.id !== id);
+      setWords(newLists);
+      // document.location.reload(true);
     }
   };
 
@@ -47,7 +59,6 @@ const EditPage = () => {
      */
     const newFin = window.prompt("Suomeksi", word.fin);
     const newEng = window.prompt("In English", word.eng);
-
     /**
      * Object with new values
      */
@@ -56,14 +67,22 @@ const EditPage = () => {
       eng: newEng,
       id: word.id,
     };
-
     /**
      * If the new object has both fields, then replace the old object with them
      */
     if (obj.fin && obj.eng) {
       try {
-        await axios.patch("http://localhost:8080/words", obj);
-        document.location.reload(true);
+        await axios.patch("/words", obj);
+        const newList = words.map((word) => {
+          if (obj.id === word.id) {
+            word.fin = obj.fin;
+            word.eng = obj.eng;
+          }
+          return word;
+        });
+        setWords(newList);
+
+        // document.location.reload(true);
       } catch (error) {
         alert(error);
       }
@@ -101,7 +120,7 @@ const EditPage = () => {
             </div>
           ))}
       {/* Component for adding a new word */}
-      <AddWord />
+      <AddWord words={words} addWord={addWord} />
     </div>
   );
 };

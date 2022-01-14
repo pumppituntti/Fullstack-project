@@ -97,6 +97,7 @@ let connectionFunctions = {
         if (err) {
           reject(err);
         } else {
+          console.log("GET");
           resolve(words);
         }
       });

@@ -40,7 +40,7 @@ const Words = ({ isPlayable }) => {
    * After receiving, the array is shuffled in random order
    */
   useEffect(() => {
-    axios("http://localhost:8080/words").then(({ data }) => {
+    axios("/words/").then(({ data }) => {
       const shuffledData = data.sort((a, b) => 0.5 - Math.random());
       setWords(shuffledData);
       setWords(data);
@@ -55,7 +55,7 @@ const Words = ({ isPlayable }) => {
   const checkWord = (e, word) => {
     // checking direction of translation
     if (finToEng) {
-      // if the input matches the correct answer, the score is incremented and the answer is added to the list of correct ones
+      // if the input matches the correct answer, the score import {  } from "module"; incremented and the answer is added to the list of correct ones
       if (e.target.value.toLowerCase() === word.eng.toLowerCase()) {
         setScore(score + 1);
         const newList = [...rightAnswers, word];
@@ -136,7 +136,9 @@ const Words = ({ isPlayable }) => {
               {/* Button to restart */}
               <button
                 onClick={() => {
-                  document.location.reload(true);
+                  setIsChecked(false);
+                  setScore(0);
+                  setRightAnswers([]);
                 }}
               >
                 Try again

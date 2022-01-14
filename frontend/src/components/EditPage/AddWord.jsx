@@ -5,7 +5,7 @@ import axios from "axios";
  * This function creates a component for adding a new word to the database
  * @returns a component for adding a new word
  */
-const AddWord = () => {
+const AddWord = ({ words, addWord }) => {
   /**
    * Input field values for Finnish and English words
    */
@@ -15,13 +15,14 @@ const AddWord = () => {
   /**
    * This function sends a request to the backend server to add a new word to the database
    */
-  const addWord = async () => {
+  const addNewWord = async () => {
     /**
      * New object to be added
      */
     const obj = {
       fin: inputValueFin,
       eng: inputValueEng,
+      id: Math.random(),
     };
 
     /**
@@ -29,8 +30,10 @@ const AddWord = () => {
      */
     if (obj.fin && obj.eng) {
       try {
-        await axios.post("http://localhost:8080/words", obj);
-        document.location.reload(true);
+        await axios.post("/words", obj);
+        addWord(obj);
+        setInputValueEng("");
+        setInputValueFin("");
       } catch (error) {
         alert(error);
       }
@@ -57,7 +60,7 @@ const AddWord = () => {
           placeholder="In English"
           onChange={(e) => setInputValueEng(e.target.value)}
         />
-        <button onClick={addWord}>Add</button>
+        <button onClick={addNewWord}>Add</button>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ const cors = require("cors");
 
 app.use(cors());
 
-app.use(express.static("frontend/public"));
+// app.use(express.static("frontend/public"));
 
 app.use(express.static("frontend/build"));
 
