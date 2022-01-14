@@ -142,7 +142,6 @@ const Words = ({ isPlayable }) => {
                   setIsChecked(false);
                   setScore(0);
                   setRightAnswers([]);
-                  setVal("");
                 }}
               >
                 Try again
