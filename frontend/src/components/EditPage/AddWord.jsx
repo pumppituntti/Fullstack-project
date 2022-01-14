@@ -3,9 +3,10 @@ import axios from "axios";
 
 /**
  * This function creates a component for adding a new word to the database
+ * @param {function} addWord - function to add a new word
  * @returns a component for adding a new word
  */
-const AddWord = ({ words, addWord }) => {
+const AddWord = ({ addWord }) => {
   /**
    * Input field values for Finnish and English words
    */

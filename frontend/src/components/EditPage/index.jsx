@@ -26,12 +26,19 @@ const EditPage = () => {
     });
   }, []);
 
+  /**
+   * Updating data when the list changes
+   */
   useEffect(() => {
     axios("/words").then(({ data }) => {
       setWords(data);
     });
   }, [words]);
 
+  /**
+   * This function adds a new word to the list
+   * @param {object} word - word to add
+   */
   const addWord = (word) => {
     const newList = [...words, word];
     setWords(newList);
@@ -120,7 +127,7 @@ const EditPage = () => {
             </div>
           ))}
       {/* Component for adding a new word */}
-      <AddWord words={words} addWord={addWord} />
+      <AddWord addWord={addWord} />
     </div>
   );
 };
