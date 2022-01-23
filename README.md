@@ -1,7 +1,6 @@
 # LearnEnglish!
 
-App: https://tolpa-learn-english.herokuapp.com/ <br />
-Screencast: https://youtu.be/j4rO9X7BCtM
+App: https://tolpa-learn-english.herokuapp.com/ 
 
 The application is built with React on the frontend and Node.js with Express.js on the backend. 
 Mysql database on TAMK server is used as storage. The app is hosted on the Heroku cloud platform.
