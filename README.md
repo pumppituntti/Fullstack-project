@@ -2,8 +2,8 @@
 
 App: https://tolpa-learn-english.herokuapp.com/ 
 
-The application is built with React on the frontend and Node.js with Express.js on the backend. 
-Mysql database on TAMK server is used as storage. The app is hosted on the Heroku cloud platform.
+The application is built with <b>React</b> on the frontend and <b>Node.js</b> with <b>Express.js</b> on the backend. 
+<b>MySQL</b> database on TAMK server is used as storage. The app is hosted on the Heroku cloud platform.
 
 LearnEnglish! allows you to learn English words and practice translation from Finnish to English and vice versa. <br />
 The application has a minimalistic look so that even the child can easily understand it.
