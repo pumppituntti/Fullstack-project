@@ -52,7 +52,6 @@ const EditPage = () => {
       await axios.delete(`/words/${id}`);
       const newLists = words.filter((word) => word.id !== id);
       setWords(newLists);
-      // document.location.reload(true);
     }
   };
 
